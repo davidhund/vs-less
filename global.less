@@ -30,10 +30,10 @@
 /* BASE: font-size, lineheight, colors, etc.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 html {
-	font-size: 65.5%; // 1em == 10px 
-	line-height: 1.5;
-	background: #FFF;
-	color: @color_text;
+  font-size: 65.5%; // 1em == 10px 
+  line-height: 1.5;
+  background: #FFF;
+  color: @color_text;
 }
 
 /*  = HIDE elements: .extra is used for 'accessible hides':
@@ -41,9 +41,9 @@ html {
     http://adaptivethemes.com/using-css-clip-as-an-accessible-method-of-hiding-content
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .extra { 
-	position:absolute !important;   
-	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
-	clip: rect(1px, 1px, 1px, 1px);
+  position:absolute !important;   
+  clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+  clip: rect(1px, 1px, 1px, 1px);
 }
 
 /*  = CLEARFIX: Makes floated children expand current container
@@ -54,10 +54,10 @@ html {
 .cf:after,
 .content:before,
 .content:after {
-	content: "";
-	display: block;
-	height: 0;
-	overflow: hidden;
+  content: "";
+  display: block;
+  height: 0;
+  overflow: hidden;
 }
 .cf:after,
 .content:after { clear: both; }
@@ -106,24 +106,24 @@ code { background-color: #EEE; color: @color_text_alt; padding: .5em; display: b
 /* HEADINGS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 h1, h2, h3, h4, h5, h6 {
-	font-size: @font_size_body;
-	margin: 0 0 @margin_bottom;
+  font-size: @font_size_body;
+  margin: 0 0 @margin_bottom;
 }
 
 h1, h2 { 
-	font-family: @font_family_headings;
-	font-weight: normal; 
-	font-style: normal;
-	font-size: 2.5em; 
-	line-height: 1.3; 
-	margin-bottom: (@margin_bottom/(2.5*@font_size_body)); 
+  font-family: @font_family_headings;
+  font-weight: normal; 
+  font-style: normal;
+  font-size: 2.5em; 
+  line-height: 1.3; 
+  margin-bottom: (@margin_bottom/(2.5*@font_size_body)); 
 }
 
 h3, h4, h5, h6 {
-	font-weight: bold;
-	font-style: normal;
-	color: @color_heading_alt;
-	margin: 1.5em 0 .5em 0;
+  font-weight: bold;
+  font-style: normal;
+  color: @color_heading_alt;
+  margin: 1.5em 0 .5em 0;
 }
 
 
@@ -131,13 +131,13 @@ h3, h4, h5, h6 {
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 a:link, a:visited, a:hover, a:focus, a:active,
 .active a:link, .active a:visited { 
-	color: @color_link;
-	text-decoration: none;
-	-webkit-transition-property: color;
-	-webkit-transition-duration: .2s;
-	-moz-transition: color .2s ease-in; 
-	-o-transition: color .2s ease-in; 
-	transition: color .2s ease-in; 
+  color: @color_link;
+  text-decoration: none;
+  -webkit-transition-property: color;
+  -webkit-transition-duration: .2s;
+  -moz-transition: color .2s ease-in; 
+  -o-transition: color .2s ease-in; 
+  transition: color .2s ease-in; 
 }
 a:hover, a:active, a:focus,
 #header h1 a:link, #header h1 a:visited { color: @color_link_hover; }
@@ -152,10 +152,10 @@ ul[role="navigation"] a:visited,
 ul[role="navigation"] a:hover, 
 ul[role="navigation"] a:active, 
 ul[role="navigation"] a:focus { 
-	font-family: @font_family_headings;
-	font-size: 1.2em; 
-	color: @color_text_alt; 
-	z-index: 1000;
+  font-family: @font_family_headings;
+  font-size: 1.2em; 
+  color: @color_text_alt; 
+  z-index: 1000;
 }
 ul[role="navigation"] a:hover, 
 ul[role="navigation"] a:active, 
@@ -178,9 +178,9 @@ a img { border: 0; text-decoration: none; }
 /* .page is a container that is centered and fixed width
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 .page {
-	padding: 0 10px;
-	width: (@page_width - 20px); /* page width minus side-padding */
-	margin: 0 auto;
+  padding: 0 10px;
+  width: (@page_width - 20px); /* page width minus side-padding */
+  margin: 0 auto;
 }
 
 #header,
@@ -196,10 +196,10 @@ nav,
 /* NAVIGATION
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 ul[role="navigation"] {
-	margin: 1em auto;
-	padding: 0;
-	list-style-type: none;
-	text-align: center;
+  margin: 1em auto;
+  padding: 0;
+  list-style-type: none;
+  text-align: center;
 }
 ul[role="navigation"] li{ display: inline; display: inline-block; margin: 0 (@font_size_body/2)  }
 
@@ -212,10 +212,10 @@ ul[role="navigation"] li{ display: inline; display: inline-block; margin: 0 (@fo
 /* FOOTER
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 [role="contentinfo"] { 
-	clear: both;
-	margin-top: @vertical_margin;
-	border-top: 1px solid @color_border;
-	padding-top: @font_size_body;
-	padding-bottom: @font_size_body;
-	text-align: right;
+  clear: both;
+  margin-top: @vertical_margin;
+  border-top: 1px solid @color_border;
+  padding-top: @font_size_body;
+  padding-bottom: @font_size_body;
+  text-align: right;
 }
