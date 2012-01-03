@@ -1,0 +1,221 @@
+
+// ===========================================================================
+// Site (application) LESS: see lessapp.org
+// This LESS file is compiled to global.css
+// @author David Hund <http://valuedstandards.com/>
+// ===========================================================================
+
+/* ===========================================================================
+// PROJECT Site (application) CSS
+// This CSS file is compiled from global.less (LESS)
+// @author David Hund <http://valuedstandards.com/>
+// =========================================================================== */
+
+// IMPORT: config.less - Variables, etc
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+@import "config";
+
+// IMPORT: @FONT_FACE: Special font-families
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+@import "fonts";
+
+// IMPORT: Normalize.css
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+@import "../../css/normalize/normalize.css";
+
+// IMPORT: Mixins
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+@import "mixins";
+
+/* BASE: font-size, lineheight, colors, etc.
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+html {
+	font-size: 65.5%; // 1em == 10px 
+	line-height: 1.5;
+	background: #FFF;
+	color: @color_text;
+}
+
+/*  = HIDE elements: .extra is used for 'accessible hides':
+    This content is hidden visually *but* picked up by screenreaders
+    http://adaptivethemes.com/using-css-clip-as-an-accessible-method-of-hiding-content
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.extra { 
+	position:absolute !important;   
+	clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+	clip: rect(1px, 1px, 1px, 1px);
+}
+
+/*  = CLEARFIX: Makes floated children expand current container
+    We could have used overflow:hidden; but need to position els 
+    outside of this container, so this it is...
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.cf:before,
+.cf:after,
+.content:before,
+.content:after {
+	content: "";
+	display: block;
+	height: 0;
+	overflow: hidden;
+}
+.cf:after,
+.content:after { clear: both; }
+.cf, .content { zoom: 1; }
+
+
+/* BASE: Text
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+div, section, article, aside { font-size: 1em; }
+p, ul, ol, dt, dd, blockquote, pre, address, figcaption, time, table, legend { font-size: @font_size_body; font-style: normal; }
+cite { font-style: normal; }
+ul ul, ol ol, ul p, ol p, blockquote p { font-size: 1em; } /* Resetting nested Emmed font-sizes */
+
+p, ul, ol, dl { margin: 0 0 @margin_bottom 0; }
+
+/* Lists */
+ul ul, ul ol, ol ol, ol ul { margin-bottom: 0; } /* Resetting margin-bottom on nested lists */
+p:last-child, dd:last-child { margin-bottom: 0; }
+nav ul, nav ol { padding-left: 0; }
+.secondary ul, .secondary ol,
+.slideshow ul, .slideshow ol { list-style-type: none; padding-left: 0; }
+.slideshow ul, .slideshow ol { margin: 0; }
+
+dt, th, label { font-weight: bold; }
+dd, blockquote { margin: 0 0 @margin_bottom 0; }
+dt+dt { margin-top: @margin_bottom; }
+dd+dd { margin-top: -@margin_bottom; } 
+
+figcaption, caption, legend, address, blockquote { font-style: italic; color: @color_text_alt; }
+th, caption, legend { text-align: left; }
+
+table, tr { border: 1px solid @color_border; }
+td, th { padding: .25em .5em; }
+th { background-color: @color_border; background-color: #ECECEC; }
+tr:hover, tr:nth-child(even) { background-color: #ECECEC; }
+tr:hover { border-bottom-color: lighten(@color_text, 20); }
+
+fieldset { border: 1px solid @color_border; }
+
+pre {}
+code { background-color: #EEE; color: @color_text_alt; padding: .5em; display: block; border: 1px solid @color_border; }
+
+::-moz-selection, ::selection { background-color: @color_border_alt; color: @color_heading_alt; }
+
+
+/* HEADINGS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+h1, h2, h3, h4, h5, h6 {
+	font-size: @font_size_body;
+	margin: 0 0 @margin_bottom;
+}
+
+h1, h2 { 
+	font-family: @font_family_headings;
+	font-weight: normal; 
+	font-style: normal;
+	font-size: 2.5em; 
+	line-height: 1.3; 
+	margin-bottom: (@margin_bottom/(2.5*@font_size_body)); 
+}
+
+h3, h4, h5, h6 {
+	font-weight: bold;
+	font-style: normal;
+	color: @color_heading_alt;
+	margin: 1.5em 0 .5em 0;
+}
+
+
+/* HYPERLINKS
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+a:link, a:visited, a:hover, a:focus, a:active,
+.active a:link, .active a:visited { 
+	color: @color_link;
+	text-decoration: none;
+	-webkit-transition-property: color;
+	-webkit-transition-duration: .2s;
+	-moz-transition: color .2s ease-in; 
+	-o-transition: color .2s ease-in; 
+	transition: color .2s ease-in; 
+}
+a:hover, a:active, a:focus,
+#header h1 a:link, #header h1 a:visited { color: @color_link_hover; }
+#header h1 a:hover, #header h1 a:focus, #header h1 a:active { color: @color_link; }
+
+p a, p a:visited, p a:hover, p a:active, p a:focus { text-decoration: underline; }
+
+/* Navigation */
+ul[role="navigation"] { }
+ul[role="navigation"] a,
+ul[role="navigation"] a:visited,
+ul[role="navigation"] a:hover, 
+ul[role="navigation"] a:active, 
+ul[role="navigation"] a:focus { 
+	font-family: @font_family_headings;
+	font-size: 1.2em; 
+	color: @color_text_alt; 
+	z-index: 1000;
+}
+ul[role="navigation"] a:hover, 
+ul[role="navigation"] a:active, 
+ul[role="navigation"] a:focus,
+ul[role="navigation"] .active a:link, 
+ul[role="navigation"] .active a:visited { color: @color_link; }
+
+
+/* IMAGES:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+img { -ms-interpolation-mode: bicubic; }
+img.left { float: left; margin: .5em (@line_height * @font_size_body) (@line_height * 0.5em) 0; }
+img.right { float: right; margin: .5em 0 (@line_height * 0.5em) (@line_height * @font_size_body); }
+a img { border: 0; text-decoration: none; }
+
+
+/* LAYOUT:
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+/* .page is a container that is centered and fixed width
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.page {
+	padding: 0 10px;
+	width: (@page_width - 20px); /* page width minus side-padding */
+	margin: 0 auto;
+}
+
+#header,
+nav,
+.content,
+[role="contentinfo"] { .page; }
+
+
+/* HEADER
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+
+
+/* NAVIGATION
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+ul[role="navigation"] {
+	margin: 1em auto;
+	padding: 0;
+	list-style-type: none;
+	text-align: center;
+}
+ul[role="navigation"] li{ display: inline; display: inline-block; margin: 0 (@font_size_body/2)  }
+
+
+/* CONTENT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+.content { } /* Needs clearing because of floats */
+
+
+/* FOOTER
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+[role="contentinfo"] { 
+	clear: both;
+	margin-top: @vertical_margin;
+	border-top: 1px solid @color_border;
+	padding-top: @font_size_body;
+	padding-bottom: @font_size_body;
+	text-align: right;
+}
