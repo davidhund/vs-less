@@ -19,21 +19,41 @@
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 @import "fonts";
 
-// IMPORT: Normalize.css
-// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-@import "../../css/normalize/normalize.css";
-
 // IMPORT: Mixins
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 @import "mixins";
 
+/*  = Based on Meyers RESET
+    http://meyerweb.com/eric/tools/css/reset/ v2.0 | 20110126
+    *NOTE: I did change quite some things...
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, data, del, dfn, em, img, ins, kbd, q, s, sub, sup, samp, small, strike, strong, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, 
+article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video
+{ margin: 0; padding: 0; border: 0; font-size: 100%; font: inherit; vertical-align: baseline; }
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section { display: block; }
+html { -webkit-overflow-scrolling: touch;  -webkit-tap-highlight-color: rgb(52,158,219);  -webkit-text-size-adjust: 100%;  -ms-text-size-adjust: 100%; }
+body { line-height: 1; }
+/*ol, ul { list-style: none; }*/
+table { border-collapse: collapse; border-spacing: 0; }
+img { -ms-interpolation-mode: bicubic; }
+audio[controls], canvas, video { display: inline-block; *display: inline; *zoom: 1; }
+details summary { cursor: pointer; }
+details summary::-webkit-details-marker { padding-right: .75em; color: @color_text;}
+::-moz-selection, ::selection { background-color: @color_link; color: #FFF; }
+
 /* BASE: font-size, lineheight, colors, etc.
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 html {
-  font-size: 65.5%; // 1em == 10px 
-  line-height: 1.5;
+  font-family: @font_family_body;
+  font-size: @font_size_base;
+  line-height: @line_height;
   background: #FFF;
   color: @color_text;
+}
+body { 
+  max-width: 40.5em; 
+  margin: @base_line auto; 
+  line-height: inherit;
 }
 
 /*  = HIDE elements: .extra is used for 'accessible hides':
@@ -59,71 +79,88 @@ html {
   height: 0;
   overflow: hidden;
 }
-.cf:after,
-.content:after { clear: both; }
+.cf:after, .content:after { clear: both; }
 .cf, .content { zoom: 1; }
 
-
+.intro { font-weight: bold; }
 /* BASE: Text
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 div, section, article, aside { font-size: 1em; }
-p, ul, ol, dt, dd, blockquote, pre, address, figcaption, time, table, legend { font-size: @font_size_body; font-style: normal; }
+p, ul, ol, dt, dd, blockquote, pre, address, figcaption, time, table, legend { font-size: @font_size_body; font-style: normal; line-height: @line_height; }
 cite { font-style: normal; }
 ul ul, ol ol, ul p, ol p, blockquote p { font-size: 1em; } /* Resetting nested Emmed font-sizes */
 
-p, ul, ol, dl { margin: 0 0 @margin_bottom 0; }
-
 /* Lists */
-ul ul, ul ol, ol ol, ol ul { margin-bottom: 0; } /* Resetting margin-bottom on nested lists */
-p:last-child, dd:last-child { margin-bottom: 0; }
-nav ul, nav ol { padding-left: 0; }
-.secondary ul, .secondary ol,
-.slideshow ul, .slideshow ol { list-style-type: none; padding-left: 0; }
-.slideshow ul, .slideshow ol { margin: 0; }
+p, ul, ol, dl { margin: 0 0 @base_line 0; }
+ul ul, ul ol, ol ol, ol ul, p:last-child, dd:last-child { margin-bottom: 0; } /* Resetting margin-bottom on nested lists */
+nav ul, nav ol, [role="contentinfo"] ul, [role="contentinfo"] ol { list-style-type: none; padding-left: 0; }
+/* Nested Lists */
+ul ul, ul ol, ol ol, ol ul { margin-left: 1.25em; }
 
 dt, th, label { font-weight: bold; }
-dd, blockquote { margin: 0 0 @margin_bottom 0; }
-dt+dt { margin-top: @margin_bottom; }
-dd+dd { margin-top: -@margin_bottom; } 
+dd { margin: 0 0 @base_line 0; }
+dt+dt { margin-top: @base_line; }
+dd+dd { margin-top: -@base_line; } 
 
 figcaption, caption, legend, address, blockquote { font-style: italic; color: @color_text_alt; }
 th, caption, legend { text-align: left; }
 
+table { margin: 0 0 @base_line 0; }
+caption { margin-bottom: @base_line/2; line-height: 1; }
 table, tr { border: 1px solid @color_border; }
-td, th { padding: .25em .5em; }
+td, th { padding: .25em .75em; }
 th { background-color: @color_border; background-color: #ECECEC; }
 tr:hover, tr:nth-child(even) { background-color: #ECECEC; }
 tr:hover { border-bottom-color: lighten(@color_text, 20); }
 
 fieldset { border: 1px solid @color_border; }
 
-pre {}
-code { background-color: #EEE; color: @color_text_alt; padding: .5em; display: block; border: 1px solid @color_border; }
-
-::-moz-selection, ::selection { background-color: @color_border_alt; color: @color_heading_alt; }
+strong, b { font-weight: bold; }
+em, i, cite, figcaption { font-style: italic; }
+abbr, acronym { cursor: help; text-transform: uppercase; letter-spacing: .1em; border-bottom: 1px dotted @color_text; }
+pre, pre * { white-space: pre; }
+pre * { line-height: @line_height; }
+sub, sup { line-height: 1; }
+sub { vertical-align: bottom; }
+sup { vertical-align: top; }
+blockquote { font-family: @font_family_body; font-style: italic; margin: 0 auto @base_line; }
+blockquote:before { content: "\201C"; float: left; }
+blockquote:after { content: "\201D"; float: right; }
+blockquote :last-child { margin-bottom: 0; }
+q { quotes: "\201C" "\201D" "\2018" "\2019"; }
+code { background-color: #EEE; color: @color_text_alt; padding: .75em; margin: .75em 0;  display: block; border: 1px solid @color_border; }
+hr { display: block; background: @color_border; color: @color_border; width: 100%; height: 0; border-top: 1px solid @color_border; border-color: rgba(0,0,0,0.3); .box-shadow(0 1px 0 rgba(255,255,255,0.3)); margin: (@base_line/1.08em) 0; }
 
 
 /* HEADINGS
+   Typographic scale based on Traditional: http://lamb.cc/typograph/
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-h1, h2, h3, h4, h5, h6 {
-  font-size: @font_size_body;
-  margin: 0 0 @margin_bottom;
-}
-
-h1, h2 { 
+h1, h2, h3, h4, h5, h6 { 
   font-family: @font_family_headings;
-  font-weight: normal; 
+  font-weight: normal;
   font-style: normal;
-  font-size: 2.5em; 
-  line-height: 1.3; 
-  margin-bottom: (@margin_bottom/(2.5*@font_size_body)); 
 }
-
-h3, h4, h5, h6 {
+h1 { 
+  font-size: 2em; 
+  line-height: @line_height;
+  margin-bottom: .75em; 
+}
+h2 {
+  font-size: 1.75em; 
+  line-height: @line_height;
+  margin-bottom: .857em; 
+}
+h3 {
+  font-size: 1.5em; 
+  line-height: @line_height;
+  margin-bottom: 1em; 
+}
+/* Same size as P */
+h4, h5, h6 {
+  font-size: 1em;
+  line-height: @line_height;
   font-weight: bold;
-  font-style: normal;
-  color: @color_heading_alt;
-  margin: 1.5em 0 .5em 0;
+  margin: 0 0 @base_line;
 }
 
 
@@ -143,50 +180,36 @@ a:hover, a:active, a:focus,
 #header h1 a:link, #header h1 a:visited { color: @color_link_hover; }
 #header h1 a:hover, #header h1 a:focus, #header h1 a:active { color: @color_link; }
 
-p a, p a:visited, p a:hover, p a:active, p a:focus { text-decoration: underline; }
+p a, p a:visited, p a:hover, p a:focus, p a:active { text-decoration: underline; }
 
 /* Navigation */
-ul[role="navigation"] { }
-ul[role="navigation"] a,
-ul[role="navigation"] a:visited,
-ul[role="navigation"] a:hover, 
-ul[role="navigation"] a:active, 
-ul[role="navigation"] a:focus { 
+[role="navigation"] { }
+[role="navigation"] a,
+[role="navigation"] a:visited,
+[role="navigation"] a:hover, 
+[role="navigation"] a:active, 
+[role="navigation"] a:focus { 
   font-family: @font_family_headings;
-  font-size: 1.2em; 
+  font-size: 1.5em; 
   color: @color_text_alt; 
   z-index: 1000;
 }
-ul[role="navigation"] a:hover, 
-ul[role="navigation"] a:active, 
-ul[role="navigation"] a:focus,
-ul[role="navigation"] .active a:link, 
-ul[role="navigation"] .active a:visited { color: @color_link; }
+[role="navigation"] a:hover, 
+[role="navigation"] a:active, 
+[role="navigation"] a:focus,
+[role="navigation"] .active a:link, 
+[role="navigation"] .active a:visited { color: @color_link; }
 
 
 /* IMAGES:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-img { -ms-interpolation-mode: bicubic; }
-img.left { float: left; margin: .5em (@line_height * @font_size_body) (@line_height * 0.5em) 0; }
-img.right { float: right; margin: .5em 0 (@line_height * 0.5em) (@line_height * @font_size_body); }
+img.left { float: left; margin: .5em @base_line (@line_height * 0.5em) 0; }
+img.right { float: right; margin: .5em 0 (@line_height * 0.5em) @base_line; }
 a img { border: 0; text-decoration: none; }
 
 
 /* LAYOUT:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-
-/* .page is a container that is centered and fixed width
-~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-.page {
-  padding: 0 10px;
-  width: (@page_width - 20px); /* page width minus side-padding */
-  margin: 0 auto;
-}
-
-#header,
-nav,
-.content,
-[role="contentinfo"] { .page; }
 
 
 /* HEADER
@@ -195,27 +218,42 @@ nav,
 
 /* NAVIGATION
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-ul[role="navigation"] {
-  margin: 1em auto;
+[role="navigation"] {
+  margin: @base_line auto;
   padding: 0;
   list-style-type: none;
   text-align: center;
 }
-ul[role="navigation"] li{ display: inline; display: inline-block; margin: 0 (@font_size_body/2)  }
+[role="navigation"] li{ display: inline; display: inline-block; margin: 0 .5em;  }
 
 
 /* CONTENT
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
-.content { } /* Needs clearing because of floats */
 
 
 /* FOOTER
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
 [role="contentinfo"] { 
   clear: both;
-  margin-top: @vertical_margin;
+  margin-top: @base_line;
   border-top: 1px solid @color_border;
   padding-top: @font_size_body;
   padding-bottom: @font_size_body;
   text-align: right;
+}
+
+
+/* DIAGNOSTIC
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+/* from: http://lea.verou.me/css3patterns/#lined-paper */
+.baselined {
+	background-color: #fff; 
+	background-image: 
+	  -webkit-linear-gradient(0deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+	  -webkit-linear-gradient(#eee .05em, transparent .05em);
+	background-size: 100% @base_line; background-color: #fff; 
+	background-image: 
+	  -webkit-linear-gradient(0deg, transparent 79px, #abced4 79px, #abced4 81px, transparent 81px),
+	  -webkit-linear-gradient(#eee .05em, transparent .05em);
+	background-size: 100% @base_line;
 }
