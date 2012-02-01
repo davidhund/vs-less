@@ -18,18 +18,23 @@
 
 // CONFIG: Sizes
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-@page_width:          920px;    // ..
 @font_size_base:      100%;     // ~= 16px
 @font_size_body:      1em;      // ~= 16px
 @line_height:         1.5;
 @base_line:           @line_height*@font_size_body; // ~= 24px
+@page_width:          54em;    // ..
+@column_width:        16em;  // 3 cols (3*16 = 48) in 54em + (3 * 1.5 gutter)
+@gutter_width:        1.5em;   // ..
+
+@column_width:        30%;  // In % now...
+@gutter_width:        2%;   // ..
 
 
 // CONFIG: Fonts
 // See e.g. - http://coding.smashingmagazine.com/2009/09/22/complete-guide-to-css-font-stacks/
 // Could use @font-face from fonts.less
 // ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-@font_family_body: sans-serif;
-@font_family_headings: @font_family_body;
+@font_family_body: 'Droid Sans', sans-serif;
+@font_family_headings: 'Droid Serif', serif;
 @font_family_alt: serif;
 
