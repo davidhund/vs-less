@@ -1,0 +1,186 @@
+
+// ===========================================================================
+// Site (custom) LESS: see lessapp.org
+// This LESS file is compiled to custom.css
+// @author David Hund <http://valuedstandards.com/>
+// ===========================================================================
+
+/* ===========================================================================
+// CUSTOM Site (application) CSS
+// This CSS file is compiled from custom.less (LESS)
+// @author David Hund <http://valuedstandards.com/>
+// =========================================================================== */
+
+// IMPORT: config.less - Variables, etc
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+@import "../config";
+
+// IMPORT: mixins.less - Variables, etc
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+@import "../mixins";
+
+// IMPORT: global.less - Variables, etc
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+@import "../global";
+
+// COLORS: inspired by 'seattle' http://kuler.adobe.com/#themeID/397689
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+@c1: #4e5f55;
+@c2: #86a384;
+@c3: #dbefb8;
+@c4: #7ac19c;
+@c5: #254f53;
+@cbg: lighten(@c3,15);
+
+@font_family_body: 'Droid Serif', Georgia, serif;
+@font_family_headings: 'Adelle Basic Bold', Georgia, serif;
+
+// FONTS
+// ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+@font-face {
+  font-family: 'Adelle Extrabold';
+  src:  url('theme/webfonts/adelle/adelle_extrabold-webfont.eot'); /* IE9 Compat Modes */
+  src:  url('theme/webfonts/adelle/adelle_extrabold-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('theme/webfonts/adelle/adelle_extrabold-webfont.woff') format('woff'), /* Modern Browsers */
+        url('theme/webfonts/adelle/adelle_extrabold-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+        url('theme/webfonts/adelle/adelle_extrabold-webfont.svg#svgAdelleExtrabold') format('svg'); /* Legacy iOS */
+}
+
+@font-face {
+  font-family: 'Adelle Basic Bold';
+  src:  url('theme/webfonts/adelle/adellebasic_bold-webfont.eot'); /* IE9 Compat Modes */
+  src:  url('theme/webfonts/adelle/adellebasic_bold-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('theme/webfonts/adelle/adellebasic_bold-webfont.woff') format('woff'), /* Modern Browsers */
+        url('theme/webfonts/adelle/adellebasic_bold-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+        url('theme/webfonts/adelle/adellebasic_bold-webfont.svg#svgAdelleBasicbold') format('svg'); /* Legacy iOS */
+}
+@font-face {
+  font-family: 'Adelle Basic Bold Italic';
+  src:  url('theme/webfonts/adelle/adellebasic_bolditalic-webfont.eot'); /* IE9 Compat Modes */
+  src:  url('theme/webfonts/adelle/adellebasic_bolditalic-webfont.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+        url('theme/webfonts/adelle/adellebasic_bolditalic-webfont.woff') format('woff'), /* Modern Browsers */
+        url('theme/webfonts/adelle/adellebasic_bolditalic-webfont.ttf')  format('truetype'), /* Safari, Android, iOS */
+        url('theme/webfonts/adelle/adellebasic_bolditalic-webfont.svg#svgAdelleBasicboldItalic') format('svg'); /* Legacy iOS */
+}
+html {
+	background: #FFF url('theme/gfx/ricepaper2.png') repeat 0 0;
+	background: #FFF url('theme/gfx/exclusive_paper.png') repeat 0 0;
+	background: @cbg url(http://noisepng.com/100-80-3.png) repeat 0 0; // TODO: download proper image!
+	font-family: @font_family_body;
+	border-top: .5em solid @c4;
+}
+.center {
+	max-width: 54em; 
+	margin: 0 auto; 
+}
+
+a:link, a:visited, a:hover, a:focus, a:active {
+	color: @c4;
+	text-decoration: none !important; // WHY!? it does not pick up otherwise...
+	border-bottom: 1px dotted @c4;
+}
+a:hover, a:focus, a:active { color: @c3; }
+
+sub, sup { font-style: normal; }
+code, kbd, pre { background-color: rgba(0,0,0,0.1); }
+pre { border-color: @c1; color: @c2; }
+mark { background-color: rgba(255,255,255,0.7); color: @color_text; }
+del { opacity: 0.75; }
+hr { border-bottom: 1px dashed @c4; }
+figcaption, caption, legend, 
+blockquote, blockquote:before, cite,
+abbr[title], acronym[title], dfn[title],
+dt { color: @c2; }
+blockquote { font-family: @font_family_body; }
+
+abbr[title], acronym[title], dfn[title] { border-color: @c1; }
+
+th { background-color: @c5; color: @cbg; }
+table, tr { border-color: @c3; }
+tr:nth-child(even) { background-color: darken(@cbg, 5%); }
+tr:hover { background-color: darken(@cbg, 10%); border-bottom-color: @cbg; }
+
+h1, h2, h3, h4, h5, h6 { font-family: @font_family_headings; font-weight: normal; color: @c5; }
+
+#intro h1 {
+	font-family: 'Adelle ExtraBold', Georgia, serif;
+	font-size: 6em;
+	line-height: 1.2;
+	color: @c3;
+	text-shadow: 0 .06em 0 rgba(0,0,0,0.25); 
+	.mask-image('theme/gfx/exclusive_paper.png'); // TEST!
+}
+
+h1 a:link, h1 a:visited, h1 a:hover, h1 a:focus, h1 a:active { color: @c3; text-decoration: none; border: none; }
+h1 a:hover, h1 a:focus, h1 a:active { color: @c4; }
+
+[role="navigation"] h1, nav h1 { .extra; }
+
+h2 { text-shadow: 0 .06em 0 #FFF; }
+[role="banner"] { .clearfix(); }
+[role="banner"] h1,
+[role="banner"] h2 {
+	color: @c3;
+	text-shadow: 0 0.1em 0 darken(@c5,10%);
+	padding: 1em 1em 0 0;
+}
+[role="banner"] h1 {
+	float: left;
+	width: 12.5%;
+	margin-right: 1em;
+	border-right: 1px solid fadeout(darken(@c5,20%),75%);
+	box-shadow: 1px 0 0 fadeout(@c3,75%);
+}
+[role="banner"] h2 { float: left; }
+p { text-shadow: 0 1px 0 #FFF; }
+
+.aside {
+	background: darken(@c5,5); 
+	.border-radius(.25em); 
+	border: 0;
+}
+aside { .aside; padding: 1%; float: right; width: 30%; margin: 1.5%; }
+aside:nth-child(odd) { float: left; }
+[role="navigation"] ul { .aside; text-align: center; vertical-align: middle; }
+[role="navigation"] li { display: inline-block; padding: .5em; line-height: 1; }
+
+[role="banner"] img { float: right; }
+
+[role="banner"] h1,
+[role="banner"] h2 {
+	font-family: @font_family_body;
+	font-size: 1em;
+	font-weight: normal;
+}
+[role="banner"] h1 { font-weight: bold; }
+
+[role="banner"],
+#intro,
+#main,
+#footer { .center; }
+
+[role="banner"]{
+	border-bottom: 1px solid fadeout(darken(@c5,20%),75%);
+	box-shadow: 0 1px 0 fadeout(@c3,75%);
+}
+
+#masthead {
+	background: @c5 url(http://noisepng.com/100-80-5.png) repeat 0 0; // TODO: download proper image!
+	color: @cbg;
+}
+
+#intro { background: transparent url('/static/img/owl-greenblue.svg') no-repeat 0 100%; }
+
+
+
+
+/* ===========================================================================
+// MEDIA QUERIES
+// =========================================================================== */
+
+/* PRINT
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~ */
+@media print {
+	
+}
